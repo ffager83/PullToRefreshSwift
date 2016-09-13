@@ -117,7 +117,7 @@ public class PullToRefreshView: UIView {
         self.addSubview(indicator)
         self.addSubview(backgroundView)
         self.addSubview(arrow)
-        self.addSubview(label)
+        //self.addSubview(label)
         self.autoresizingMask = .FlexibleWidth
     }
    
@@ -125,11 +125,11 @@ public class PullToRefreshView: UIView {
         super.layoutSubviews()
         self.arrow.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
         self.label.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2)
-        self.arrow.frame = CGRectOffset(arrow.frame, -60, 0)
+        self.arrow.frame = CGRectOffset(arrow.frame, 0, 0)
         let x = self.arrow.frame.origin.x + self.arrow.frame.width + 20
         var frame = self.label.frame
         frame.origin.x = x
-        self.label.frame = frame
+        //self.label.frame = frame
         self.indicator.center = self.arrow.center
     }
     
