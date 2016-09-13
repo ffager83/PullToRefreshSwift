@@ -49,10 +49,10 @@ public class PullToRefreshView: UIView {
             }
             switch self.state {
             case .Stop:
-                self.label.text = NSLocalizedString("Finished refreshing",comment:"")
+                self.label.text = "";
                 stopAnimating()
             case .Finish:
-                self.label.text = NSLocalizedString("Got all data",comment:"")
+                self.label.text = "";
                 var duration = PullToRefreshConst.animationDuration
                 var time = dispatch_time(DISPATCH_TIME_NOW, Int64(duration * Double(NSEC_PER_SEC)))
                 dispatch_after(time, dispatch_get_main_queue()) {
@@ -65,24 +65,15 @@ public class PullToRefreshView: UIView {
                 }
             case .Refreshing:
                 if oldValue == .Triggered {
-                    self.label.text = NSLocalizedString("Loading...",comment:"")
+                    self.label.text = "";
                     startAnimating()
                 }
             case .Pulling: //starting point
                 arrowRotationBack()
-                if self.arrow.alpha > 0.4 {
-                    self.label.text = pull ? NSLocalizedString("Pull down to refresh",comment:"") :
-                        NSLocalizedString("Push up to refresh",comment:"")
-                } else {
-                    self.label.text = "";
-                }
+                self.label.text = "";
             case .Triggered:
                 arrowRotation()
-                if pull {
-                    self.label.text = NSLocalizedString("Pull release to refresh",comment:"")
-                } else {
-                    self.label.text = NSLocalizedString("Push release to refresh",comment:"")
-                }
+                self.label.text = "";
             } //switch
         }// didSet
     }
